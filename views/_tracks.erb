@@ -1,0 +1,17 @@
+<% current_user = @sc_client.get('/me') %>
+
+SoundCloud user: <b><%= current_user.username %></b><br/><br/>
+
+<% @tracks = @sc_client.get('/me/tracks') %>
+
+<ul>
+<% @tracks.each do |track| %>
+  <li>
+    [<%= track.id %>]
+    <%= track.title %> 
+    (<%= track.duration / 1000 %> sec)
+    <% if @vk_client %>
+      <a href="/dl/<%= track.id %>">upload to VK</a>
+    <% end %>
+  </li>
+<% end %>

@@ -1,0 +1,5 @@
+config/*.yml
+recs/*
+!recs/folder.me
+vendor/*
+web_start.bat

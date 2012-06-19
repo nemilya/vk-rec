@@ -1,0 +1,15 @@
+<% unless @sc_logged %>
+  <a href="/auth/soundcloud">SC login</a>
+<% end %>
+<% unless @vk_logged %>
+  <a href="/auth/vkontakte">VK login</a>
+<% end %>
+
+<% if @sc_logged || @vk_logged  %>
+  <a href="/logout">Logout</a>
+<% end %>
+
+<% if @sc_client %>
+  <h2>Tracks</h2>
+  <%= erb :'_tracks', :layout=>false %>
+<% end %>
