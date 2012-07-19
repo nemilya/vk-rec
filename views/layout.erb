@@ -1,9 +1,34 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>VK Rec (by SoundCloud)</title>
+    <meta charset="utf-8" />
   </head>
   <body>
     <h1>VK Rec</h1>
+    <p>
+    Демо приложение по интеграции нескольких сервисов для записи аудио.
+    <br />
+
+    Для записи звука и публикации в свои аудио записи в ВКонтакте, необходимо:
+
+    <ul>
+      <li>создать аккаунт/авторизоваться на <a href="http://soundcloud.com/">SoundCloud.com</a></li>
+      <li>записать <a href="http://soundcloud.com/upload">трэк</a> на SoundCloud</li>
+      <li>зайти на это демо приложение - <a href="http://vk-rec.cloudfoundry.com">vk-rec.cloudfoundry.com</a></li>
+      <li>авторизовать SoundCloud приложение - разрешить доступ: появится список трэков из SoundCloud аккаунта</li>
+      <li>авторизовать VKontakte приложение - напротив трэков появится ссылка для 
+        конвертации в VK</li>
+      <li>действует ограничение - перенести можно только wav трэк, 
+      продолжительностью не более 10 секунд</li>
+      <li>после нажатия на ссылку около трэка - трэк будет скачан
+      с SoundCloud переконвертирован в mp3 и добавлен в аудиозаписи в 
+      вашем <a href="http://vk.com/audio">ВКонтакте аккаунте</a></li>
+    </ul>
+
+
+    </p>
+
     <%= yield %>
   </body>
 </html>

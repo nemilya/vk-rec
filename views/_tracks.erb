@@ -2,16 +2,24 @@
 
 SoundCloud user: <b><%= current_user.username %></b><br/><br/>
 
-<% @tracks = @sc_client.get('/me/tracks') %>
-
 <ul>
 <% @tracks.each do |track| %>
   <li>
     [<%= track.id %>]
     <%= track.title %> 
+    (<%= track.original_format %>)
     (<%= track.duration / 1000 %> sec)
-    <% if @vk_client %>
-      <a href="/dl/<%= track.id %>">upload to VK</a>
+
+    <small><b>
+    <% if valid_to_vk_track?(track) %>
+      <% if @vk_client %>
+        <a href="/dl/<%= track.id %>">upload to VK</a>
+      <% else %>
+        (need to login to VK)
+      <% end %>
+    <% else %>
+      (only wav format, and < 10 sec)
     <% end %>
+    </b></small>
   </li>
 <% end %>

@@ -42,6 +42,11 @@ get "/logout" do
 end
 
 get '/' do
+  @tracks = []
+  if @sc_client
+    @tracks = @sc_client.get('/me/tracks')
+  end
+
   erb :index
 end
 
@@ -59,7 +64,7 @@ end
 
 get '/dl/:id' do
   track = @sc_client.get('/tracks/'+params[:id])
-  if track
+  if track && valid_to_vk_track?(track)
     file_name = params[:id].to_i.to_s + '.wav'
     wav_file_path_to = File.join("recs", file_name)
 

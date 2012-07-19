@@ -1,5 +1,9 @@
 helpers do
 
+  def valid_to_vk_track?(track)
+    track.original_format == 'wav' && (track.duration / 1000 <= 10)
+  end
+
   def upload_to_vk(mp3_content, title='Title', artist='Artist')
     require "rest-client"
     mp3_file_tmp = "#{Time.now.strftime('file-%Y%m%d-%H%M%S')}.mp3"
